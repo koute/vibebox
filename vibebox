@@ -151,6 +151,12 @@ unless File.exist? "/home/#{SANDBOX_USERNAME}/.cargo/bin/rustup"
     raise "installation failed" if $?.exitstatus != 0
 end
 
+unless File.exist? "/home/#{SANDBOX_USERNAME}/.local/bin/kimi"
+    puts "Installing kimi..."
+    system "curl -L code.kimi.com/install.sh | bash"
+    raise "installation failed" if $?.exitstatus != 0
+end
+
 exec "/bin/bash"
 EOS
 
