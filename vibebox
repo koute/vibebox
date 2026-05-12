@@ -88,6 +88,8 @@ PACKAGES = %w{
     pkg-config
     protobuf-compiler
     python3
+    python3-numpy
+    python3-pil
     ripgrep
     ruby
     sudo
