@@ -173,15 +173,27 @@ end
 exec "/bin/bash"
 EOS
 
-Dir.mktmpdir do |tmpdir|
-    Dir.chdir(tmpdir) do
-        File.write(".entrypoint.rb", SETUP_SH)
-        File.chmod(0755, ".entrypoint.rb")
-        File.write("Dockerfile", DOCKERFILE)
-        command = "docker build -f Dockerfile -t #{IMAGE_TAG.shellescape} ./"
-        system command
-        raise unless $?.exitstatus == 0
+force_build = false
+if ARGV.include?("--force-build")
+    force_build = true
+    ARGV.delete("--force-build")
+end
+
+image_exists = system("docker image inspect #{IMAGE_TAG.shellescape} > /dev/null 2>&1")
+
+if force_build || !image_exists
+    Dir.mktmpdir do |tmpdir|
+        Dir.chdir(tmpdir) do
+            File.write(".entrypoint.rb", SETUP_SH)
+            File.chmod(0755, ".entrypoint.rb")
+            File.write("Dockerfile", DOCKERFILE)
+            command = "docker build -f Dockerfile -t #{IMAGE_TAG.shellescape} ./"
+            system command
+            raise unless $?.exitstatus == 0
+        end
     end
+else
+    puts "Docker image '#{IMAGE_TAG}' already exists; skipping build (use --force-build to trigger 'docker build' anyway)"
 end
 
 term = ENV["TERM"]
