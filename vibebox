@@ -106,6 +106,7 @@ PACKAGES = %w{
     sudo
     x11-apps
     xvfb
+    xxd
 }
 
 IMAGE_TAG = "vibebox"
