@@ -228,7 +228,13 @@ if File.exist? "/dev/kvm"
     end
 end
 
+last_arg = nil
 ARGV.each do |arg|
+    if last_arg == "-v" || last_arg == "--volume"
+        arg = "#{arg}:#{arg}" unless arg.include?(":")
+    end
+
+    last_arg = arg
     command << arg
 end
 
