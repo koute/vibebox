@@ -61,6 +61,7 @@ gid = `id -g`.strip
 raise if uid.empty? || gid.empty?
 
 PACKAGES = %w{
+    bc
     build-essential
     ca-certificates
     cmake
@@ -88,6 +89,7 @@ PACKAGES = %w{
     libpython3-dev
     libssl-dev
     locales
+    netcat-openbsd
     make
     mesa-utils
     mc
@@ -96,6 +98,7 @@ PACKAGES = %w{
     npm
     pkg-config
     protobuf-compiler
+    psmisc
     python3
     python3-matplotlib
     python3-numpy
@@ -107,6 +110,7 @@ PACKAGES = %w{
     x11-apps
     xvfb
     xxd
+    zstd
 }
 
 IMAGE_TAG = "vibebox"
