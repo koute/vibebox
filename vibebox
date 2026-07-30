@@ -93,6 +93,7 @@ PACKAGES = %w{
     make
     mesa-utils
     mc
+    mingw-w64
     net-tools
     ninja-build
     npm
