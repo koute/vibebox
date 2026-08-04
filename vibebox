@@ -90,6 +90,7 @@ PACKAGES = %w{
     libssl-dev
     locales
     netcat-openbsd
+    numactl
     make
     mesa-utils
     mc
@@ -98,6 +99,7 @@ PACKAGES = %w{
     ninja-build
     npm
     pkg-config
+    poppler-utils
     protobuf-compiler
     psmisc
     python3
@@ -107,6 +109,7 @@ PACKAGES = %w{
     python3-scipy
     ripgrep
     ruby
+    strace
     sudo
     x11-apps
     xvfb
