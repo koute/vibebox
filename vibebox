@@ -231,6 +231,11 @@ command = [
     "--entrypoint", "/home/ubuntu/.entrypoint.rb"
 ]
 
+seccomp_path = File.join(__dir__, "seccomp.json")
+command += [
+    "--security-opt", "seccomp=#{seccomp_path}"
+]
+
 if File.exist? "/dev/kvm"
     kvm_group = `getent group kvm`.strip.split(":")[2]
     if kvm_group != nil
