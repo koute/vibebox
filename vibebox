@@ -181,6 +181,8 @@ unless File.exist? "/home/#{SANDBOX_USERNAME}/.local/bin/kimi"
     raise "installation failed" if $?.exitstatus != 0
 end
 
+`sudo mount -t fusectl fusectl /sys/fs/fuse/connections 2>&1`
+
 exec "/bin/bash"
 EOS
 
@@ -237,6 +239,13 @@ if File.exist? "/dev/kvm"
             "--group-add", kvm_group,
         ]
     end
+end
+
+if File.exist? "/dev/fuse"
+    # NOTE: also needs `--cap-add SYS_ADMIN`
+    command += [
+        "--device", "/dev/fuse",
+    ]
 end
 
 last_arg = nil
