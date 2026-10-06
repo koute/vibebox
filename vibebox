@@ -64,11 +64,13 @@ PACKAGES = %w{
     bc
     build-essential
     ca-certificates
+    clang
     cmake
     curl
     file
     g++
     gcc
+    gdb
     git
     imagemagick
     inetutils-ping
