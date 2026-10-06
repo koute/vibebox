@@ -222,6 +222,7 @@ command = [
     "--hostname=localhost",
     "--gpus=all",
     "--tmpfs=/tmp:exec",
+    "--tmpfs=/var/tmp:exec",
     "--ipc=host",
     "--net=host",
     "--tty",
