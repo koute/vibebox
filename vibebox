@@ -184,6 +184,7 @@ unless File.exist? "/home/#{SANDBOX_USERNAME}/.local/bin/kimi"
 end
 
 `sudo mount -t fusectl fusectl /sys/fs/fuse/connections 2>&1`
+`sudo umount /proc/driver/nvidia/params 2>&1`
 
 exec "/bin/bash"
 EOS
