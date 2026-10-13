@@ -195,6 +195,12 @@ if ARGV.include?("--force-build")
     ARGV.delete("--force-build")
 end
 
+yolo_mode = false
+if ARGV.include?("--yolo")
+    yolo_mode = true
+    ARGV.delete("--yolo")
+end
+
 image_exists = system("docker image inspect #{IMAGE_TAG.shellescape} > /dev/null 2>&1")
 
 if force_build || !image_exists
@@ -236,9 +242,17 @@ command = [
 ]
 
 seccomp_path = File.join(__dir__, "seccomp.json")
-command += [
-    "--security-opt", "seccomp=#{seccomp_path}"
-]
+if yolo_mode
+    command += [
+        "--privileged",
+        "--cap-add", "SYS_ADMIN",
+        "--security-opt", "systempaths=unconfined"
+    ]
+else
+    command += [
+        "--security-opt", "seccomp=#{seccomp_path}"
+    ]
+end
 
 if File.exist? "/dev/kvm"
     kvm_group = `getent group kvm`.strip.split(":")[2]
