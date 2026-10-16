@@ -61,10 +61,12 @@ gid = `id -g`.strip
 raise if uid.empty? || gid.empty?
 
 PACKAGES = %w{
+    autotools-dev
     bc
     build-essential
     ca-certificates
     clang
+    clang-20
     cmake
     curl
     file
@@ -91,7 +93,11 @@ PACKAGES = %w{
     libpython3-dev
     libssl-dev
     linux-perf
+    lld
+    lld-20
+    llvm-20
     locales
+    nasm
     netcat-openbsd
     numactl
     make
@@ -110,10 +116,13 @@ PACKAGES = %w{
     python3-numpy
     python3-pil
     python3-scipy
+    python-is-python3
     ripgrep
+    rsync
     ruby
     strace
     sudo
+    time
     valgrind
     x11-apps
     xvfb
