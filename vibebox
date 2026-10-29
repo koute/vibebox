@@ -234,6 +234,7 @@ if term == "screen"
 end
 
 command = [
+    "schedtool", "-n", "20", "-B", "-a", "0xfffffffe", "-e",
     "docker", "run",
     "--rm",
     "--hostname=localhost",
