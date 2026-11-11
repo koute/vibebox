@@ -269,6 +269,10 @@ end
 last_arg = nil
 ARGV.each do |arg|
     if last_arg == "-v" || last_arg == "--volume"
+        if arg.end_with?(":ro") && arg.split(":").length == 2
+            arg = arg[..-4]
+            arg = "#{arg}:#{arg}:ro"
+        end
         arg = "#{arg}:#{arg}" unless arg.include?(":")
     end
 
