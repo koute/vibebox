@@ -209,8 +209,15 @@ if term == "screen"
     term = "rxvt-unicode-256color"
 end
 
-command = [
-    "schedtool", "-n", "20", "-B", "-a", "0xfffffffe", "-e",
+command = []
+
+unless yolo_mode
+    command += [
+        "schedtool", "-n", "20", "-B", "-a", "0xfffffffe", "-e"
+    ]
+end
+
+command += [
     "docker", "run",
     "--rm",
     "--hostname=localhost",
@@ -230,6 +237,7 @@ command = [
 
 seccomp_path = File.join(__dir__, "seccomp.json")
 if yolo_mode
+    puts "WARNING: RUNNING IN YOLO MODE!"
     command += [
         "--privileged",
         "--cap-add", "SYS_ADMIN",
