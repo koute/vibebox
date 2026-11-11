@@ -163,33 +163,9 @@ unless File.exist? "/home/#{SANDBOX_USERNAME}/.local/bin/uv"
     raise "installation failed" if $?.exitstatus != 0
 end
 
-unless File.exist? "/home/#{SANDBOX_USERNAME}/.local/bin/vibe"
-    puts "Installing mistral-vibe..."
-    system "/home/#{SANDBOX_USERNAME}/.local/bin/uv tool install mistral-vibe"
-    raise "installation failed" if $?.exitstatus != 0
-end
-
-unless File.exist? "/home/#{SANDBOX_USERNAME}/.opencode/bin/opencode"
-    puts "Installing opencode..."
-    system "curl -fsSL https://opencode.ai/install | bash"
-    raise "installation failed" if $?.exitstatus != 0
-end
-
-unless File.exist? "/home/#{SANDBOX_USERNAME}/.local/bin/claude"
-    puts "Installing claude..."
-    system "curl -fsSL https://claude.ai/install.sh | bash"
-    raise "installation failed" if $?.exitstatus != 0
-end
-
 unless File.exist? "/home/#{SANDBOX_USERNAME}/.cargo/bin/rustup"
     puts "Installing rustup..."
     system "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
-    raise "installation failed" if $?.exitstatus != 0
-end
-
-unless File.exist? "/home/#{SANDBOX_USERNAME}/.local/bin/kimi"
-    puts "Installing kimi..."
-    system "curl -L code.kimi.com/install.sh | bash"
     raise "installation failed" if $?.exitstatus != 0
 end
 
