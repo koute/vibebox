@@ -62,6 +62,7 @@ raise if uid.empty? || gid.empty?
 
 PACKAGES = %w{
     autotools-dev
+    b3sum
     bc
     build-essential
     ca-certificates
