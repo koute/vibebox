@@ -70,6 +70,7 @@ PACKAGES = %w{
     clang-20
     cmake
     curl
+    ffmpeg
     file
     fuse3
     g++
@@ -81,6 +82,9 @@ PACKAGES = %w{
     iproute2
     jq
     less
+    libavcodec-dev
+    libavutil-dev
+    libavformat-dev
     libgl1
     libgl1-mesa-dri
     libegl1
@@ -94,6 +98,7 @@ PACKAGES = %w{
     libpixman-1-dev
     libpython3-dev
     libssl-dev
+    libswresample-dev
     linux-perf
     lld
     lld-20
